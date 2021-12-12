@@ -7,7 +7,7 @@ NUM_REQUESTS = int(os.getenv('NUM_REQUESTS'))
 INTERNAL_IP = True
 
 if INTERNAL_IP: 
-    url = 'http://' + os.environ['INFER_MNIST_END_SERVICE_PORT'] + ':' + os.environ['INFER_MNIST_END_SERVICE_PORT'] + '/inference'
+    url = 'http://' + os.environ['INFER_MNIST_END_SERVICE_HOST'] + ':' + os.environ['INFER_MNIST_END_SERVICE_PORT'] + '/inference'
 else: 
     # print('No external ip set')
     # exit(1)
@@ -15,7 +15,7 @@ else:
     NUM_THREADS = 100
     NUM_REQUESTS = 10
 
-
+print(url)
 threads_lst = []
 
 

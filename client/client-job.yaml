@@ -13,5 +13,5 @@ spec:
         - name: NUM_THREADS
           value: "100"
         - name: NUM_REQUESTS
-          value: "100"
+          value: "1000"
         
