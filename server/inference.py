@@ -6,6 +6,8 @@ import torchvision
 # from IPython.display import Image, display
 from PIL import Image
 from flask import Flask, json, request
+import os
+from subprocess import Popen
 
 
 # Recurrent neural network (many-to-one)
@@ -34,9 +36,13 @@ def preprocess(image):
 #     image = image.unsqueeze(0)
     return image
 
-
-device = torch.device('cuda') if torch.cuda.is_available() else torch.device('cpu')
-
+if torch.cuda.is_available():
+    device = torch.device('cuda')
+    p = Popen(['sh log_gpu.sh'])
+    # p.terminate()
+else: 
+    device = torch.device('cpu')
+    p = Popen(['sh', 'log_cpu.sh'])
 model = RNN(28, 128, 2, 10)
 model.load_state_dict(torch.load('model.ckpt', map_location=device))
 model.eval()

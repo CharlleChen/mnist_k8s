@@ -30,6 +30,8 @@ RUN conda install -y flask
 
 COPY inference.py .
 COPY model.ckpt .
+COPY log_cpu.sh .
+COPY log_gpu.sh .
 
 CMD python3 inference.py
 
