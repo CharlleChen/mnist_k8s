@@ -21,9 +21,10 @@ threads_lst = []
 
 def html_post(thread_time):
     thread_time.start = time.time()
-    files = {'image': open('test.png', 'rb')}
+    img = open('test.png', 'rb')
     for i in range(NUM_REQUESTS):
-        res = requests.post(url, files=files)
+        img.seek(0)
+        res = requests.post(url, files={'image': img})
         # ********* For Debug purpose only ********* # 
         # print(f"res->{res}")
         # res_test = requests.get(url)
