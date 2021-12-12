@@ -19,6 +19,11 @@ spec:
                   image: charllechen/mnist-k8s
                   ports:
                       - containerPort: 5000
+                  resources:
+                      limits:
+                          nvidia.com/gpu: 1
+
+
 
 ---
 apiVersion: v1
